@@ -4,9 +4,10 @@ import useStyles from "./editableFinanceCard.style.js";
 import FinanceCardForm from "../FinanceCardForm";
 import FinanceCard from "../FinanceCard";
 
-export default function EditableFinanceCard() {
+export default function EditableFinanceCard(props) {
   const classes = useStyles();
   const [editFormOpen, setEditFormOpen] = useState(false);
+  let { card } = props;
 
   const openEditForm = () => {
     setEditFormOpen(true);

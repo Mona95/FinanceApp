@@ -19,8 +19,18 @@ export default function FinanceCardForm(props) {
         >
           FCard Name
         </Typography>
-        <TextField size="small" label="Expense" id="standard-start-adornment" />
-        <TextField size="small" label="Income" id="standard-start-adornment" />
+        <TextField
+          size="small"
+          label="Expense"
+          type="number"
+          id="standard-start-adornment"
+        />
+        <TextField
+          size="small"
+          label="Income"
+          type="number"
+          id="standard-start-adornment"
+        />
         <br />
         <TextField
           id="standard-select-currency"

@@ -20,11 +20,13 @@ export default function AddBar() {
       <TextField
         label="Expense"
         id="standard-start-adornment"
+        type="number"
         className={clsx(classes.margin, classes.textField)}
       />
       <TextField
         label="Income"
         id="standard-start-adornment"
+        type="number"
         className={clsx(classes.margin, classes.textField)}
       />
       <TextField

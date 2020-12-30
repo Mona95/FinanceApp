@@ -1,3 +1,5 @@
+import * as actionTypes from "../actions/actionTypes";
+
 const initState = {
   fCards: [],
   totalIncome: 0,
@@ -6,6 +8,8 @@ const initState = {
 
 export const rootReducer = (state = initState, action) => {
   switch (action.type) {
+    case actionTypes.ADD_FCARD:
+      return { ...state, fCard: [...state.fCards, action.payload] };
     default:
       return state;
   }

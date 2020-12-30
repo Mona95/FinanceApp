@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     width: "40ch",
     display: "inline-block",
     marginLeft: "24px !important",
-    padding: "10px !important",
+    //padding: "10px !important",
     top: 14,
   },
   addIcon: {

@@ -21,10 +21,10 @@ export default function FinanceCard(props) {
         </Typography>
         <br />
         <Typography className={classes.pos} color="textSecondary">
-          Income :
+          Expense :
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Expense :
+          Income :
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           Currency :

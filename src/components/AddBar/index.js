@@ -40,7 +40,7 @@ export default function AddBar() {
         ))}
       </TextField>
       <Button
-        variant="contained"
+        variant="outlined"
         className={classes.addButton}
         color="secondary"
       >

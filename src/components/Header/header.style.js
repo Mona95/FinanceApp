@@ -9,12 +9,21 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 35,
   },
   totalInfo: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(4),
     fontWeight: "bold",
   },
   title: {
     flexGrow: 1,
     fontWeight: "bold",
+  },
+  incomeInfo: {
+    color: "#63c66f",
+  },
+  expenseInfo: {
+    color: "#c71621",
+  },
+  baseInfo: {
+    color: "lightgray",
   },
 }));
 

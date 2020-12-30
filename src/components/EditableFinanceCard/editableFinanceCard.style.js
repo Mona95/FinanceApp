@@ -5,7 +5,7 @@ const useStyles = makeStyles({
     width: 255,
     height: 260,
     margin: 20,
-    background: "#d1c3b2",
+    background: "#ececec",
   },
 });
 

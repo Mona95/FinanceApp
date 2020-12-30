@@ -17,3 +17,8 @@ export const deleteFCard = (cardName) => ({
   type: actionTypes.DELETE_FCARD,
   payload: cardName,
 });
+
+export const filterFCards = (searchStr) => ({
+  type: actionTypes.FILTER_FCARDS,
+  payload: searchStr,
+});

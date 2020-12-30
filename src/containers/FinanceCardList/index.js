@@ -8,16 +8,22 @@ import { isEmpty } from "../../utils";
 
 function FinanceCardList(props) {
   const classes = useStyles();
-  let { fCards } = props;
+  let { fCards, filteredFCards, searchedValue } = props;
+
   return (
     <div className={classes.listWrapper}>
-      {isEmpty(fCards) ? (
+      {(isEmpty(fCards) && isEmpty(filteredFCards)) ||
+      (searchedValue !== "" && isEmpty(filteredFCards)) ? (
         <Typography>No Finance Card Found!</Typography>
       ) : (
         <GridList cellHeight={160} className={classes.gridList} cols={4}>
-          {fCards.map((card, index) => (
-            <EditableFinanceCard key={index} card={card} />
-          ))}
+          {!isEmpty(filteredFCards)
+            ? filteredFCards.map((card, index) => (
+                <EditableFinanceCard key={index} card={card} />
+              ))
+            : fCards.map((card, index) => (
+                <EditableFinanceCard key={index} card={card} />
+              ))}
         </GridList>
       )}
     </div>
@@ -26,6 +32,8 @@ function FinanceCardList(props) {
 
 const mapStateToProps = (state) => ({
   fCards: state.fCards,
+  filteredFCards: state.filteredFCards,
+  searchedValue: state.searchedValue,
 });
 
 export default connect(mapStateToProps)(FinanceCardList);

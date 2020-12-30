@@ -5,25 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import AddBoxIcon from "@material-ui/icons/AddBox";
-
-const currencies = [
-  {
-    value: "USD",
-    label: "USD($)",
-  },
-  {
-    value: "EUR",
-    label: "EUR(€)",
-  },
-  {
-    value: "JPY",
-    label: "JPY(¥)",
-  },
-  {
-    value: "TRY",
-    label: "TRY(₺)",
-  },
-];
+import { currencyLists } from "../../utils";
 
 export default function AddBar() {
   const classes = useStyles();
@@ -51,7 +33,7 @@ export default function AddBar() {
         label="Select"
         helperText="Please select your currency"
       >
-        {currencies.map((option) => (
+        {currencyLists().map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>

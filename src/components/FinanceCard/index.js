@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
@@ -8,10 +7,10 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import useStyles from "./financeCard.style.js";
 
-export default function FinanceCard() {
+export default function FinanceCard(props) {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <>
       <CardContent>
         <Typography
           className={classes.title}
@@ -31,14 +30,14 @@ export default function FinanceCard() {
           Currency :
         </Typography>
       </CardContent>
-      <CardActions>
-        <IconButton size="small">
+      <CardActions className={classes.root}>
+        <IconButton size="small" onClick={props.openEditForm}>
           <EditIcon className={classes.editBtn} />
         </IconButton>
-        <IconButton size="small">
+        <IconButton size="small" onClick={props.closeEditForm}>
           <DeleteIcon className={classes.deleteBtn} />
         </IconButton>
       </CardActions>
-    </Card>
+    </>
   );
 }

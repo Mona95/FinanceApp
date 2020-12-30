@@ -5,6 +5,8 @@ const useStyles = makeStyles({
     fontSize: 14,
     fontWeight: "bold",
     textAlign: "center",
+    textShadow: "2px 0px 2px #fff",
+    textTransform: "uppercase",
   },
 });
 

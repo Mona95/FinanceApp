@@ -20,7 +20,7 @@ export default function EditableFinanceCard(props) {
   return (
     <Card className={classes.root}>
       {editFormOpen ? (
-        <FinanceCardForm closeEditForm={closeEditForm} />
+        <FinanceCardForm card={card} closeEditForm={closeEditForm} />
       ) : (
         <FinanceCard card={card} openEditForm={openEditForm} />
       )}

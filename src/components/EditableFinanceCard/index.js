@@ -22,7 +22,7 @@ export default function EditableFinanceCard(props) {
       {editFormOpen ? (
         <FinanceCardForm closeEditForm={closeEditForm} />
       ) : (
-        <FinanceCard openEditForm={openEditForm} />
+        <FinanceCard card={card} openEditForm={openEditForm} />
       )}
     </Card>
   );

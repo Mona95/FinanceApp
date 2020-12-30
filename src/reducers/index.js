@@ -9,7 +9,7 @@ const initState = {
 export const rootReducer = (state = initState, action) => {
   switch (action.type) {
     case actionTypes.ADD_FCARD:
-      return { ...state, fCard: [...state.fCards, action.payload] };
+      return { ...state, fCards: [action.payload, ...state.fCards] };
     default:
       return state;
   }

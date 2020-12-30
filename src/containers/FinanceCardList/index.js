@@ -15,8 +15,8 @@ function FinanceCardList(props) {
         <Typography>No Finance Card Found!</Typography>
       ) : (
         <GridList cellHeight={160} className={classes.gridList} cols={4}>
-          {fCards.map((card) => (
-            <EditableFinanceCard card={card} />
+          {fCards.map((card, index) => (
+            <EditableFinanceCard key={index} card={card} />
           ))}
         </GridList>
       )}

@@ -9,6 +9,9 @@ import useStyles from "./financeCard.style.js";
 
 export default function FinanceCard(props) {
   const classes = useStyles();
+  let {
+    card: { name, expense, income, currency },
+  } = props;
   return (
     <>
       <CardContent>
@@ -17,17 +20,17 @@ export default function FinanceCard(props) {
           color="textSecondary"
           gutterBottom
         >
-          FCard Name
+          {name}
         </Typography>
         <br />
         <Typography className={classes.pos} color="textSecondary">
-          Expense :
+          Expense : {expense}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Income :
+          Income : {income}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Currency :
+          Currency : {currency}
         </Typography>
       </CardContent>
       <CardActions className={classes.root}>

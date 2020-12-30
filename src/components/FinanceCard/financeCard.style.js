@@ -9,9 +9,12 @@ const useStyles = makeStyles({
     fontSize: 14,
     fontWeight: "bold",
     textAlign: "center",
+    textShadow: "2px 0px 2px #fff",
+    textTransform: "uppercase",
   },
   pos: {
     marginBottom: 15,
+    fontSize: 14,
   },
   deleteBtn: {
     color: "#c71621",

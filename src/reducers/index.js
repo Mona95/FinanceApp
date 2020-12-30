@@ -22,6 +22,14 @@ export const rootReducer = (state = initState, action) => {
         ...state,
         fCards,
       };
+    case actionTypes.DELETE_FCARD:
+      fCards = state.fCards.filter((fCard) => {
+        return fCard.name !== action.payload;
+      });
+      return {
+        ...state,
+        fCards,
+      };
     default:
       return state;
   }

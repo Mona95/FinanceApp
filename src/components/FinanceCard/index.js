@@ -37,7 +37,7 @@ export default function FinanceCard(props) {
         <IconButton size="small" onClick={props.openEditForm}>
           <EditIcon className={classes.editBtn} />
         </IconButton>
-        <IconButton size="small" onClick={props.closeEditForm}>
+        <IconButton size="small" onClick={props.deleteFCard}>
           <DeleteIcon className={classes.deleteBtn} />
         </IconButton>
       </CardActions>

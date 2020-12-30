@@ -12,3 +12,8 @@ export const updateFCard = (cardName, updatedData) => ({
     updatedData,
   },
 });
+
+export const deleteFCard = (cardName) => ({
+  type: actionTypes.DELETE_FCARD,
+  payload: cardName,
+});

@@ -7,7 +7,11 @@ import Typography from "@material-ui/core/Typography";
 import useStyles from "./financeCardForm.style.js";
 import { currencyLists } from "../../utils";
 import { connect } from "react-redux";
-import { updateFCard } from "../../actions/actions";
+import {
+  decreaseTotal,
+  increaseTotal,
+  updateFCard,
+} from "../../actions/actions";
 
 function FinanceCardForm(props) {
   const classes = useStyles();
@@ -30,6 +34,17 @@ function FinanceCardForm(props) {
     setCardCurrency(e.target.value);
   };
 
+  const calculateDifference = (oldValue, newValue, type) => {
+    let difference;
+    if (oldValue > newValue) {
+      difference = oldValue - newValue;
+      props.decreaseTotal(type, difference);
+    } else if (oldValue < newValue) {
+      difference = newValue - oldValue;
+      props.increaseTotal(type, difference);
+    }
+  };
+
   const handpeUpdateCardData = () => {
     let cardData = {
       expense: cardExpense,
@@ -38,6 +53,8 @@ function FinanceCardForm(props) {
     };
     props.updateFCard(name, cardData);
     props.closeEditForm();
+    calculateDifference(expense, cardExpense, "expense");
+    calculateDifference(income, cardIncome, "income");
   };
 
   return (
@@ -105,6 +122,10 @@ function FinanceCardForm(props) {
 const mapDispatchToProps = (dispatch) => ({
   updateFCard: (cardName, updatedData) =>
     dispatch(updateFCard(cardName, updatedData)),
+  increaseTotal: (totalType, amount) =>
+    dispatch(increaseTotal(totalType, amount)),
+  decreaseTotal: (totalType, amount) =>
+    dispatch(decreaseTotal(totalType, amount)),
 });
 
 const mapStateToProps = (state) => ({

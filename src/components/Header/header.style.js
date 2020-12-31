@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#63c66f",
   },
   expenseInfo: {
-    color: "#c71621",
+    color: "#dd5f67",
   },
   baseInfo: {
     color: "lightgray",

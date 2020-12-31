@@ -22,3 +22,19 @@ export const filterFCards = (searchStr) => ({
   type: actionTypes.FILTER_FCARDS,
   payload: searchStr,
 });
+
+export const increaseTotal = (totalType, amount) => ({
+  type: actionTypes.INCREASE_TOTAL,
+  payload: {
+    totalType,
+    amount,
+  },
+});
+
+export const decreaseTotal = (totalType, amount) => ({
+  type: actionTypes.DECREASE_TOTAL,
+  payload: {
+    totalType,
+    amount,
+  },
+});

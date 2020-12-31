@@ -4,7 +4,7 @@ import useStyles from "./editableFinanceCard.style.js";
 import FinanceCardForm from "../FinanceCardForm";
 import FinanceCard from "../FinanceCard";
 import { connect } from "react-redux";
-import { deleteFCard } from "../../actions/actions";
+import { deleteFCard, decreaseTotal } from "../../actions/actions";
 
 function EditableFinanceCard(props) {
   const classes = useStyles();
@@ -21,6 +21,8 @@ function EditableFinanceCard(props) {
 
   const handleDeleteFCard = () => {
     props.deleteFCard(card.name);
+    props.decreaseTotal("expense", card.expense);
+    props.decreaseTotal("income", card.income);
   };
 
   return (
@@ -40,6 +42,8 @@ function EditableFinanceCard(props) {
 
 const mapDispatchToProps = (dispatch) => ({
   deleteFCard: (cardName) => dispatch(deleteFCard(cardName)),
+  decreaseTotal: (totalType, amount) =>
+    dispatch(decreaseTotal(totalType, amount)),
 });
 
 export default connect(null, mapDispatchToProps)(EditableFinanceCard);

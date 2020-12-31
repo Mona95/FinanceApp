@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import { currencyLists } from "../../utils";
 import { connect } from "react-redux";
-import { addFCard } from "../../actions/actions";
+import { addFCard, increaseTotal } from "../../actions/actions";
 
 function AddBar(props) {
   const classes = useStyles();
@@ -41,6 +41,8 @@ function AddBar(props) {
       alert("Card already exists, please choose another name!");
     } else {
       props.addFCard(cardData);
+      props.increaseTotal("expense", expense);
+      props.increaseTotal("income", income);
     }
   };
 
@@ -99,6 +101,8 @@ function AddBar(props) {
 
 const mapDispatchToProps = (dispatch) => ({
   addFCard: (cardData) => dispatch(addFCard(cardData)),
+  increaseTotal: (totalType, amount) =>
+    dispatch(increaseTotal(totalType, amount)),
 });
 
 const mapStateToProps = (state) => ({

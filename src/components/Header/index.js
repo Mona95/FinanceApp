@@ -35,7 +35,7 @@ function Header(props) {
             T.Income : {props.totalIncome}
           </Typography>
           <Typography className={clsx(classes.totalInfo, classes.expenseInfo)}>
-            T.Expense : {props.totalIncome}
+            T.Expense : {props.totalExpense}
           </Typography>
           <Typography className={clsx(classes.totalInfo, classes.baseInfo)}>
             Base Rate : {baseRate}

@@ -47,6 +47,34 @@ export const rootReducer = (state = initState, action) => {
         filteredFCards: filteredValues,
         searchedValue: value,
       };
+    case actionTypes.INCREASE_TOTAL:
+      let increasedTotal =
+        action.payload.totalType === "expense"
+          ? {
+              totalExpense:
+                state.totalExpense + parseInt(action.payload.amount),
+            }
+          : {
+              totalIncome: state.totalIncome + parseInt(action.payload.amount),
+            };
+      return {
+        ...state,
+        ...increasedTotal,
+      };
+    case actionTypes.DECREASE_TOTAL:
+      let decreasedTotal =
+        action.payload.totalType === "expense"
+          ? {
+              totalExpense:
+                state.totalExpense - parseInt(action.payload.amount),
+            }
+          : {
+              totalIncome: state.totalIncome - parseInt(action.payload.amount),
+            };
+      return {
+        ...state,
+        ...decreasedTotal,
+      };
     default:
       return state;
   }

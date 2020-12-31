@@ -1,4 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
+import { isEmpty } from "../utils";
 
 const initState = {
   fCards: [],
@@ -9,7 +10,7 @@ const initState = {
 };
 
 export const rootReducer = (state = initState, action) => {
-  let fCards;
+  let updatedState, fCards, filteredFCards;
   switch (action.type) {
     case actionTypes.ADD_FCARD:
       return { ...state, fCards: [action.payload, ...state.fCards] };
@@ -20,18 +21,30 @@ export const rootReducer = (state = initState, action) => {
         }
         return fCard;
       });
-      return {
-        ...state,
-        fCards,
-      };
+      updatedState = { ...state, fCards };
+      if (!isEmpty(state.filteredFCards)) {
+        filteredFCards = state.filteredFCards.map((filteredFCard) => {
+          if (filteredFCard.name === action.payload.cardName) {
+            return { ...filteredFCard, ...action.payload.updatedData };
+          }
+          return filteredFCard;
+        });
+        updatedState = { ...updatedState, filteredFCards };
+      }
+
+      return updatedState;
     case actionTypes.DELETE_FCARD:
       fCards = state.fCards.filter((fCard) => {
         return fCard.name !== action.payload;
       });
-      return {
-        ...state,
-        fCards,
-      };
+      updatedState = { ...state, fCards };
+      if (!isEmpty(state.filteredFCards)) {
+        filteredFCards = state.filteredFCards.filter((filteredFCard) => {
+          return filteredFCard.name !== action.payload;
+        });
+        updatedState = { ...updatedState, filteredFCards };
+      }
+      return updatedState;
     case actionTypes.FILTER_FCARDS:
       let newState = Object.assign({}, state);
       let value = action.payload;

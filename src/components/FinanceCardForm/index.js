@@ -14,7 +14,7 @@ import {
   updateFCard,
 } from "../../actions/actions";
 
-function FinanceCardForm(props) {
+const FinanceCardForm = (props) => {
   const classes = useStyles();
 
   let {
@@ -31,13 +31,17 @@ function FinanceCardForm(props) {
     setCardIncome(e.target.value);
   };
 
+  //Calculate the difference between oldValue and newValue and based on that
+  //decide to increase or decrease the total amounts
   const calculateDifference = (oldValue, newValue, type) => {
     oldValue = parseInt(oldValue);
     newValue = parseInt(newValue);
     let difference;
+    //if oldValue is bigger than newValue, totalAmount should be decreased
     if (oldValue > newValue) {
       difference = oldValue - newValue;
       props.decreaseTotal(type, difference, currency);
+      //if oldValue is smaller than newValue, totalAmount should be increased
     } else if (oldValue < newValue) {
       difference = newValue - oldValue;
       props.increaseTotal(type, difference, currency);
@@ -84,7 +88,7 @@ function FinanceCardForm(props) {
           InputProps={{ inputProps: { min: 0 } }}
         />
         <Typography className={classes.pos} color="textSecondary">
-          Currency :{currency}
+          Currency : {currency}
         </Typography>
       </CardContent>
       <CardActions>
@@ -107,7 +111,7 @@ function FinanceCardForm(props) {
       </CardActions>
     </>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   updateFCard: (cardName, updatedData) =>

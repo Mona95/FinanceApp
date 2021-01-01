@@ -6,7 +6,7 @@ import Content from "../Content";
 //Material-ui Components
 import { Container } from "@material-ui/core";
 
-function App() {
+const App = () => {
   return (
     <Container>
       <Header />
@@ -14,6 +14,6 @@ function App() {
       <Content />
     </Container>
   );
-}
+};
 
 export default App;

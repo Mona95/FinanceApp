@@ -10,7 +10,7 @@ import useStyles from "./filter.style.js";
 //Actions
 import { filterFCards } from "../../actions/actions";
 
-function Filter(props) {
+const Filter = (props) => {
   const classes = useStyles();
   const [searchValue, setSearchValue] = useState("");
 
@@ -20,7 +20,7 @@ function Filter(props) {
   };
 
   return (
-    <Paper component="form" className={classes.root}>
+    <Paper className={classes.root}>
       <InputBase
         className={classes.input}
         placeholder="Expense, Income or Currency"
@@ -32,7 +32,7 @@ function Filter(props) {
       </IconButton>
     </Paper>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   filterFCards: (searchStr) => dispatch(filterFCards(searchStr)),

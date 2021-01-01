@@ -12,10 +12,12 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 //Styles
 import useStyles from "./financeCard.style.js";
+//Helper Methods
+import { renderCurrencySymbol } from "../../utils";
 //SVGs
 import { ReactComponent as Graph } from "../../assets/images/graph.svg";
 
-export default function FinanceCard(props) {
+const FinanceCard = (props) => {
   const classes = useStyles();
   let {
     card: { name, expense, income, currency },
@@ -34,13 +36,16 @@ export default function FinanceCard(props) {
         <Typography className={classes.pos} color="textSecondary">
           <KeyboardArrowDownIcon className={classes.arrowDownIcon} />
           Expense : {expense}
+          {renderCurrencySymbol(currency)}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          <KeyboardArrowUpIcon className={classes.arrowUpIcon} /> Income :
+          <KeyboardArrowUpIcon className={classes.arrowUpIcon} /> Income :{" "}
           {income}
+          {renderCurrencySymbol(currency)}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          <LocalAtmIcon className={classes.currencyIcon} /> Currency :{currency}
+          <LocalAtmIcon className={classes.currencyIcon} /> Currency :{" "}
+          {currency}
         </Typography>
       </CardContent>
       <CardActions className={classes.root}>
@@ -54,4 +59,5 @@ export default function FinanceCard(props) {
       </CardActions>
     </>
   );
-}
+};
+export default FinanceCard;

@@ -1,3 +1,9 @@
+/**
+ * Data persistence
+ * in order to persist inputted data, we will use localStorage
+ */
+
+//Loading the state by getting it from LocalStorage
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem("state");
@@ -10,6 +16,7 @@ export const loadState = () => {
   }
 };
 
+//Saving the updated state in localStorage
 export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);

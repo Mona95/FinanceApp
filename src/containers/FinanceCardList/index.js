@@ -10,12 +10,15 @@ import useStyles from "./financeCardList.style.js";
 //Helper Methods
 import { isEmpty } from "../../utils";
 
-function FinanceCardList(props) {
+const FinanceCardList = (props) => {
   const classes = useStyles();
   let { fCards, filteredFCards, searchedValue } = props;
-
   return (
     <div className={classes.listWrapper}>
+      {/** Need to check both fCards and filteredFCards in order to display cards.
+       * if both of the state variables were empty => show "No Finance Card Found!"
+       * if searchedValue is not empty , but filteredFCards is empty => "No Finance Card Found!"
+       */}
       {(isEmpty(fCards) && isEmpty(filteredFCards)) ||
       (searchedValue !== "" && isEmpty(filteredFCards)) ? (
         <Typography>No Finance Card Found!</Typography>
@@ -32,7 +35,7 @@ function FinanceCardList(props) {
       )}
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   fCards: state.fCards,

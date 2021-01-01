@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 //Components
 import FinanceCardForm from "../FinanceCardForm";
@@ -10,8 +10,11 @@ import useStyles from "./editableFinanceCard.style.js";
 //Actions
 import { deleteFCard, decreaseTotal } from "../../actions/actions";
 
-function EditableFinanceCard(props) {
+const EditableFinanceCard = (props) => {
   const classes = useStyles();
+  //editFormOpen is being used to decide between displaying the card content or the card edit form
+  //if its true => it will display the card edit form
+  //if its false => it will display the card content
   const [editFormOpen, setEditFormOpen] = useState(false);
   let { card } = props;
 
@@ -25,13 +28,10 @@ function EditableFinanceCard(props) {
 
   const handleDeleteFCard = () => {
     props.deleteFCard(card.name);
+    //totalIncome,totalExpense should be updated based on the deleted card
     props.decreaseTotal("expense", card.expense, card.currency);
     props.decreaseTotal("income", card.income, card.currency);
   };
-
-  useEffect(() => {
-    editFormOpen && console.log("edit form is open");
-  }, [editFormOpen]);
 
   return (
     <Card className={classes.root}>
@@ -46,7 +46,7 @@ function EditableFinanceCard(props) {
       )}
     </Card>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   deleteFCard: (cardName) => dispatch(deleteFCard(cardName)),

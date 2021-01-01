@@ -6,6 +6,8 @@ export const setCurrencyRates = (rates) => ({
   payload: { rates },
 });
 
+//Using Middlewares to
+//Retreive the currency rates' data in order to set the related state variables
 export function fetchCurrencyRates() {
   return (dispatch) => {
     return axios

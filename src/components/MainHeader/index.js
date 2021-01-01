@@ -10,7 +10,7 @@ import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 //Styles
 import useStyles from "./header.style.js";
 
-function Header(props) {
+const Header = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.headerWrapper}>
@@ -18,7 +18,7 @@ function Header(props) {
         <Toolbar>
           <MonetizationOnIcon className={classes.appIcon} />
           <Typography variant="h6" className={classes.title}>
-            Welcome to Finance App !
+            Welcome to Finance App
           </Typography>
           <Typography className={clsx(classes.totalInfo, classes.incomeInfo)}>
             T.Income : {props.totalIncome}€
@@ -30,7 +30,7 @@ function Header(props) {
       </AppBar>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   totalIncome: state.totalIncome,

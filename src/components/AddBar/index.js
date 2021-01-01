@@ -15,7 +15,7 @@ import { currencyLists } from "../../utils";
 //Actions
 import { addFCard, increaseTotal } from "../../actions/actions";
 
-function AddBar(props) {
+const AddBar = (props) => {
   const classes = useStyles();
 
   let [fcardName, setFCardName] = useState(""),
@@ -43,12 +43,17 @@ function AddBar(props) {
       income: income,
       currency: currency,
     };
+    //check if the current data has been already added to state
+    //(only checks for name if its duplicated or not)
     if (props.fCards.find((card) => card.name === fcardName)) {
       alert("Card already exists, please choose another name");
+      //check whether fcardName has been provided or not
     } else if (fcardName === "") {
       alert("FCard Name can not be empty.");
     } else {
+      //add newly inputted data in state and array of fCards
       props.addFCard(cardData);
+      //totalIncome,totalExpense values should be updated based on the new fCard as well.
       props.increaseTotal("expense", expense, currency);
       props.increaseTotal("income", income, currency);
     }
@@ -124,7 +129,7 @@ function AddBar(props) {
       </Grid>
     </div>
   );
-}
+};
 
 const mapDispatchToProps = (dispatch) => ({
   addFCard: (cardData) => dispatch(addFCard(cardData)),

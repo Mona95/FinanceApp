@@ -10,7 +10,7 @@ import Grid from "@material-ui/core/Grid";
 //Styles
 import useStyles from "./content.style.js";
 
-export default function Content() {
+const Content = () => {
   const classes = useStyles();
   return (
     <div className={classes.contentWrapper}>
@@ -32,4 +32,6 @@ export default function Content() {
       <FinanceCardList />
     </div>
   );
-}
+};
+
+export default Content;

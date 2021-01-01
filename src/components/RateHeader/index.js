@@ -9,7 +9,7 @@ import useStyles from "./rateHeader.style";
 //Actions
 import { fetchCurrencyRates } from "../../actions/middleware/currencyRates";
 
-function RateHeader(props) {
+const RateHeader = (props) => {
   const classes = useStyles();
   let { eurRate, usdRate, jpyRate, tryRate } = props;
 
@@ -36,7 +36,7 @@ function RateHeader(props) {
       </Grid>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   eurRate: state.EUR,

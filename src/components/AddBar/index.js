@@ -12,9 +12,9 @@ import { addFCard, increaseTotal } from "../../actions/actions";
 function AddBar(props) {
   const classes = useStyles();
 
-  let [fcardName, setFCardName] = useState(),
-    [expense, setExpense] = useState(),
-    [income, setIncome] = useState(),
+  let [fcardName, setFCardName] = useState(""),
+    [expense, setExpense] = useState(0),
+    [income, setIncome] = useState(0),
     [currency, setCurrency] = useState("EUR");
 
   const updateFCardName = (e) => {
@@ -38,7 +38,9 @@ function AddBar(props) {
       currency: currency,
     };
     if (props.fCards.find((card) => card.name === fcardName)) {
-      alert("Card already exists, please choose another name!");
+      alert("Card already exists, please choose another name");
+    } else if (fcardName === "") {
+      alert("FCard Name can not be empty.");
     } else {
       props.addFCard(cardData);
       props.increaseTotal("expense", expense);
@@ -52,28 +54,29 @@ function AddBar(props) {
         label="FCard Name"
         name="name"
         type="text"
-        id="standard-start-adornment"
         className={clsx(classes.margin, classes.textField)}
         onChange={updateFCardName}
+        value={fcardName}
       />
       <TextField
         label="Expense"
         name="expense"
-        id="standard-start-adornment"
         type="number"
+        value={expense}
         className={clsx(classes.margin, classes.textField)}
         onChange={updateExpense}
+        InputProps={{ inputProps: { min: 0 } }}
       />
       <TextField
         label="Income"
         name="income"
-        id="standard-start-adornment"
         type="number"
+        value={income}
         className={clsx(classes.margin, classes.textField)}
         onChange={updateIncome}
+        InputProps={{ inputProps: { min: 0 } }}
       />
       <TextField
-        id="standard-select-currency"
         name="currency"
         label="Select"
         helperText="Please select your currency"

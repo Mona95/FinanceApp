@@ -72,22 +72,21 @@ function FinanceCardForm(props) {
           label="Expense"
           name="expense"
           type="number"
-          id="standard-start-adornment"
           value={cardExpense}
           onChange={updateCardExpense}
+          InputProps={{ inputProps: { min: 0 } }}
         />
         <TextField
           size="small"
           label="Income"
           name="income"
           type="number"
-          id="standard-start-adornment"
           value={cardIncome}
           onChange={updateCardIncome}
+          InputProps={{ inputProps: { min: 0 } }}
         />
         <br />
         <TextField
-          id="standard-select-currency"
           name="currency"
           select
           helperText="Currency"

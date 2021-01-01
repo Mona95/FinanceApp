@@ -65,10 +65,11 @@ export const rootReducer = (state = initState, action) => {
         action.payload.totalType === "expense"
           ? {
               totalExpense:
-                state.totalExpense + parseInt(action.payload.amount),
+                state.totalExpense + parseInt(action.payload.amount || 0),
             }
           : {
-              totalIncome: state.totalIncome + parseInt(action.payload.amount),
+              totalIncome:
+                state.totalIncome + parseInt(action.payload.amount || 0),
             };
       return {
         ...state,
@@ -79,10 +80,11 @@ export const rootReducer = (state = initState, action) => {
         action.payload.totalType === "expense"
           ? {
               totalExpense:
-                state.totalExpense - parseInt(action.payload.amount),
+                state.totalExpense - parseInt(action.payload.amount || 0),
             }
           : {
-              totalIncome: state.totalIncome - parseInt(action.payload.amount),
+              totalIncome:
+                state.totalIncome - parseInt(action.payload.amount || 0),
             };
       return {
         ...state,

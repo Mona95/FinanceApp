@@ -44,3 +44,8 @@
             └─── FinanceCardList
 
 ```
+<hr/>
+
+#### App View
+
+![financeapp](./financeapp.png)

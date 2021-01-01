@@ -35,3 +35,49 @@ export const renderCurrencySymbol = (currency) => {
 export const isEmpty = (array) => {
   return array.length === 0;
 };
+
+//check availability of a value among a source object
+export const isAvailable = (source, value) => {
+  return source.toString().toLowerCase().includes(value.toLowerCase());
+};
+
+//convert the updated amount to the base currency(EUR) if needed
+// ****** Method will use `Math.round` in order to have a more clear amount for totalIncome/totalExpense
+export const convertTotalAmount = (state, currAmount, currency) => {
+  if (currAmount !== 0 && currency !== "EUR") {
+    currAmount = parseFloat(
+      Math.round(currAmount / state[currency]).toFixed(4)
+    );
+  }
+  return currAmount;
+};
+
+//Increasing the amount of totalIncome/totalExpense
+export const incTotalAmount = (state, totalType, increasedAmount) => {
+  let finalAmount;
+  finalAmount =
+    totalType === "expense"
+      ? {
+          totalExpense: state.totalExpense + increasedAmount,
+        }
+      : {
+          totalIncome: state.totalIncome + increasedAmount,
+        };
+
+  return finalAmount;
+};
+
+//Decreasing the amount of totalIncome/totalExpense
+export const decTotalAmount = (state, totalType, decreasedAmount) => {
+  let finalAmount;
+  finalAmount =
+    totalType === "expense"
+      ? {
+          totalExpense: state.totalExpense - decreasedAmount,
+        }
+      : {
+          totalIncome: state.totalIncome - decreasedAmount,
+        };
+
+  return finalAmount;
+};

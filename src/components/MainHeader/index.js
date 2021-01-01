@@ -21,7 +21,7 @@ const Header = (props) => {
             Welcome to Finance App
           </Typography>
           <Typography className={clsx(classes.totalInfo, classes.incomeInfo)}>
-            T.Income : {props.totalIncome}€
+            T.Income: {props.totalIncome}€
           </Typography>
           <Typography className={clsx(classes.totalInfo, classes.expenseInfo)}>
             T.Expense : {props.totalExpense}€

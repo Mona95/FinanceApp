@@ -1,5 +1,11 @@
 import * as actionTypes from "../actions/actionTypes";
-import { isEmpty } from "../utils";
+import {
+  isEmpty,
+  isAvailable,
+  convertTotalAmount,
+  incTotalAmount,
+  decTotalAmount,
+} from "../utils";
 
 const initState = {
   fCards: [],
@@ -15,9 +21,22 @@ const initState = {
 
 export const rootReducer = (state = initState, action) => {
   let updatedState, fCards, filteredFCards;
+
   switch (action.type) {
+    //Fetch and set the currency rates' values
+    case actionTypes.SET_CURRENCY_RATES:
+      return {
+        ...state,
+        USD: action.payload.rates.USD.toFixed(4),
+        JPY: action.payload.rates.JPY.toFixed(4),
+        TRY: action.payload.rates.TRY.toFixed(4),
+      };
+
+    //Adding Finance Card to fCards
     case actionTypes.ADD_FCARD:
       return { ...state, fCards: [action.payload, ...state.fCards] };
+
+    //Updating current Finance Card and save the updated version in the fCards
     case actionTypes.UPDATE_FCARD:
       fCards = state.fCards.map((fCard) => {
         if (fCard.name === action.payload.cardName) {
@@ -37,6 +56,8 @@ export const rootReducer = (state = initState, action) => {
       }
 
       return updatedState;
+
+    //Deleting the current selected Finance Card
     case actionTypes.DELETE_FCARD:
       fCards = state.fCards.filter((fCard) => {
         return fCard.name !== action.payload;
@@ -49,17 +70,16 @@ export const rootReducer = (state = initState, action) => {
         updatedState = { ...updatedState, filteredFCards };
       }
       return updatedState;
+
+    //Filtering the Finance Cards according to the searched value
     case actionTypes.FILTER_FCARDS:
       let newState = Object.assign({}, state);
       let value = action.payload;
       let filteredValues = newState.fCards.filter((fCard) => {
         return (
-          fCard.expense
-            .toString()
-            .toLowerCase()
-            .includes(value.toLowerCase()) ||
-          fCard.income.toString().toLowerCase().includes(value.toLowerCase()) ||
-          fCard.currency.toLowerCase().includes(value.toLowerCase())
+          isAvailable(fCard.expense, value) ||
+          isAvailable(fCard.income, value) ||
+          isAvailable(fCard.currency, value)
         );
       });
       return {
@@ -67,55 +87,43 @@ export const rootReducer = (state = initState, action) => {
         filteredFCards: filteredValues,
         searchedValue: value,
       };
+
+    //Increasing the amount of totalIncome/totalExpense
     case actionTypes.INCREASE_TOTAL:
       let increasedAmount = parseInt(action.payload.amount || 0);
-      if (increasedAmount !== 0 && action.payload.currency !== "EUR") {
-        increasedAmount = parseFloat(
-          Math.round(increasedAmount / state[action.payload.currency]).toFixed(
-            4
-          )
-        );
-      }
-      let increasedTotal =
-        action.payload.totalType === "expense"
-          ? {
-              totalExpense: state.totalExpense + increasedAmount,
-            }
-          : {
-              totalIncome: state.totalIncome + increasedAmount,
-            };
+      increasedAmount = convertTotalAmount(
+        state,
+        increasedAmount,
+        action.payload.currency
+      );
+      let increasedTotal = incTotalAmount(
+        state,
+        action.payload.totalType,
+        increasedAmount
+      );
       return {
         ...state,
         ...increasedTotal,
       };
+
+    //Decreasing the amount of totalIncome/totalExpense
     case actionTypes.DECREASE_TOTAL:
       let decreasedAmount = parseInt(action.payload.amount || 0);
-      if (decreasedAmount !== 0 && action.payload.currency !== "EUR") {
-        decreasedAmount = parseFloat(
-          Math.round(decreasedAmount / state[action.payload.currency]).toFixed(
-            4
-          )
-        );
-      }
-      let decreasedTotal =
-        action.payload.totalType === "expense"
-          ? {
-              totalExpense: state.totalExpense - decreasedAmount,
-            }
-          : {
-              totalIncome: state.totalIncome - decreasedAmount,
-            };
+      decreasedAmount = convertTotalAmount(
+        state,
+        decreasedAmount,
+        action.payload.currency
+      );
+      let decreasedTotal = decTotalAmount(
+        state,
+        action.payload.totalType,
+        decreasedAmount
+      );
       return {
         ...state,
         ...decreasedTotal,
       };
-    case actionTypes.SET_CURRENCY_RATES:
-      return {
-        ...state,
-        USD: action.payload.rates.USD.toFixed(4),
-        JPY: action.payload.rates.JPY.toFixed(4),
-        TRY: action.payload.rates.TRY.toFixed(4),
-      };
+
     default:
       return state;
   }

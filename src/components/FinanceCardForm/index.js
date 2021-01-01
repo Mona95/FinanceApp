@@ -19,17 +19,13 @@ function FinanceCardForm(props) {
   } = props;
 
   let [cardExpense, setCardExpense] = useState(expense),
-    [cardIncome, setCardIncome] = useState(income),
-    [cardCurrency, setCardCurrency] = useState(currency);
+    [cardIncome, setCardIncome] = useState(income);
 
   const updateCardExpense = (e) => {
     setCardExpense(e.target.value);
   };
   const updateCardIncome = (e) => {
     setCardIncome(e.target.value);
-  };
-  const updateCardCurrency = (e) => {
-    setCardCurrency(e.target.value);
   };
 
   const calculateDifference = (oldValue, newValue, type) => {
@@ -47,7 +43,6 @@ function FinanceCardForm(props) {
     let cardData = {
       expense: cardExpense,
       income: cardIncome,
-      currency: cardCurrency,
     };
     props.updateFCard(name, cardData);
     props.closeEditForm();

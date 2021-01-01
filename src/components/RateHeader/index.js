@@ -22,13 +22,13 @@ function RateHeader(props) {
           </Paper>
         </Grid>
         <Grid item xs={3}>
-          <Paper className={classes.paper}>USD = {usdRate}</Paper>
+          <Paper className={classes.paper}>USD($) = {usdRate}$</Paper>
         </Grid>
         <Grid item xs={3}>
-          <Paper className={classes.paper}>JPY = {jpyRate}</Paper>
+          <Paper className={classes.paper}>JPY(¥) = {jpyRate}</Paper>
         </Grid>
         <Grid item xs={3}>
-          <Paper className={classes.paper}>TRY = {tryRate}</Paper>
+          <Paper className={classes.paper}>TRY(₺) = {tryRate}</Paper>
         </Grid>
       </Grid>
     </div>

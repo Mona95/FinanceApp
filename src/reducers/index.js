@@ -54,8 +54,11 @@ export const rootReducer = (state = initState, action) => {
       let value = action.payload;
       let filteredValues = newState.fCards.filter((fCard) => {
         return (
-          fCard.expense.toLowerCase().includes(value.toLowerCase()) ||
-          fCard.income.toLowerCase().includes(value.toLowerCase()) ||
+          fCard.expense
+            .toString()
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          fCard.income.toString().toLowerCase().includes(value.toLowerCase()) ||
           fCard.currency.toLowerCase().includes(value.toLowerCase())
         );
       });

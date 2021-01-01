@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import clsx from "clsx";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -6,9 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import useStyles from "./header.style.js";
 import { connect } from "react-redux";
+
 function Header(props) {
   const classes = useStyles();
-
   return (
     <div className={classes.headerWrapper}>
       <AppBar position="static">

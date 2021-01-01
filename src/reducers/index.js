@@ -69,9 +69,11 @@ export const rootReducer = (state = initState, action) => {
       };
     case actionTypes.INCREASE_TOTAL:
       let increasedAmount = parseInt(action.payload.amount || 0);
-      if (increasedAmount !== 0) {
+      if (increasedAmount !== 0 && action.payload.currency !== "EUR") {
         increasedAmount = parseFloat(
-          Math.abs(increasedAmount / state[action.payload.currency]).toFixed(4)
+          Math.round(increasedAmount / state[action.payload.currency]).toFixed(
+            4
+          )
         );
       }
       let increasedTotal =
@@ -88,9 +90,11 @@ export const rootReducer = (state = initState, action) => {
       };
     case actionTypes.DECREASE_TOTAL:
       let decreasedAmount = parseInt(action.payload.amount || 0);
-      if (decreasedAmount !== 0) {
+      if (decreasedAmount !== 0 && action.payload.currency !== "EUR") {
         decreasedAmount = parseFloat(
-          Math.abs(decreasedAmount / state[action.payload.currency]).toFixed(4)
+          Math.round(decreasedAmount / state[action.payload.currency]).toFixed(
+            4
+          )
         );
       }
       let decreasedTotal =

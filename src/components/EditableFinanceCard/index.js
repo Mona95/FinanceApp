@@ -21,8 +21,8 @@ function EditableFinanceCard(props) {
 
   const handleDeleteFCard = () => {
     props.deleteFCard(card.name);
-    props.decreaseTotal("expense", card.expense);
-    props.decreaseTotal("income", card.income);
+    props.decreaseTotal("expense", card.expense, card.currency);
+    props.decreaseTotal("income", card.income, card.currency);
   };
 
   useEffect(() => {
@@ -46,8 +46,8 @@ function EditableFinanceCard(props) {
 
 const mapDispatchToProps = (dispatch) => ({
   deleteFCard: (cardName) => dispatch(deleteFCard(cardName)),
-  decreaseTotal: (totalType, amount) =>
-    dispatch(decreaseTotal(totalType, amount)),
+  decreaseTotal: (totalType, amount, currency) =>
+    dispatch(decreaseTotal(totalType, amount, currency)),
 });
 
 export default connect(null, mapDispatchToProps)(EditableFinanceCard);

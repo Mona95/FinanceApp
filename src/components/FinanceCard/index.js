@@ -32,12 +32,11 @@ export default function FinanceCard(props) {
           Expense : {expense}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          <KeyboardArrowUpIcon className={classes.arrowUpIcon} /> Income :{" "}
+          <KeyboardArrowUpIcon className={classes.arrowUpIcon} /> Income :
           {income}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          <LocalAtmIcon className={classes.currencyIcon} /> Currency :{" "}
-          {currency}
+          <LocalAtmIcon className={classes.currencyIcon} /> Currency :{currency}
         </Typography>
       </CardContent>
       <CardActions className={classes.root}>

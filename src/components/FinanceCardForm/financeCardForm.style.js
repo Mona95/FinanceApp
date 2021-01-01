@@ -10,6 +10,11 @@ const useStyles = makeStyles({
     background: "#DBDDE7",
     borderRadius: 15,
   },
+  pos: {
+    marginBottom: 17,
+    fontSize: 14,
+    marginTop: 26,
+  },
   currencyCombo: {
     width: 168,
   },

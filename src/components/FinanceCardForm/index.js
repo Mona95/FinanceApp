@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Button, CardContent } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "./financeCardForm.style.js";
-import { currencyLists } from "../../utils";
 import { connect } from "react-redux";
 import {
   decreaseTotal,
@@ -85,21 +83,9 @@ function FinanceCardForm(props) {
           onChange={updateCardIncome}
           InputProps={{ inputProps: { min: 0 } }}
         />
-        <br />
-        <TextField
-          name="currency"
-          select
-          helperText="Currency"
-          value={cardCurrency}
-          onChange={updateCardCurrency}
-          className={classes.currencyCombo}
-        >
-          {currencyLists().map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+        <Typography className={classes.pos} color="textSecondary">
+          Currency :{currency}
+        </Typography>
       </CardContent>
       <CardActions>
         <Button

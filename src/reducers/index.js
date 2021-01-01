@@ -7,10 +7,10 @@ const initState = {
   searchedValue: "",
   totalIncome: 0,
   totalExpense: 0,
-  eurRate: 1,
-  usdRate: 0,
-  jpyRate: 0,
-  tryRate: 0,
+  EUR: 1,
+  USD: 0,
+  JPY: 0,
+  TRY: 0,
 };
 
 export const rootReducer = (state = initState, action) => {
@@ -68,30 +68,38 @@ export const rootReducer = (state = initState, action) => {
         searchedValue: value,
       };
     case actionTypes.INCREASE_TOTAL:
+      let increasedAmount = parseInt(action.payload.amount || 0);
+      if (increasedAmount !== 0) {
+        increasedAmount = parseFloat(
+          Math.abs(increasedAmount / state[action.payload.currency]).toFixed(4)
+        );
+      }
       let increasedTotal =
         action.payload.totalType === "expense"
           ? {
-              totalExpense:
-                state.totalExpense + parseInt(action.payload.amount || 0),
+              totalExpense: state.totalExpense + increasedAmount,
             }
           : {
-              totalIncome:
-                state.totalIncome + parseInt(action.payload.amount || 0),
+              totalIncome: state.totalIncome + increasedAmount,
             };
       return {
         ...state,
         ...increasedTotal,
       };
     case actionTypes.DECREASE_TOTAL:
+      let decreasedAmount = parseInt(action.payload.amount || 0);
+      if (decreasedAmount !== 0) {
+        decreasedAmount = parseFloat(
+          Math.abs(decreasedAmount / state[action.payload.currency]).toFixed(4)
+        );
+      }
       let decreasedTotal =
         action.payload.totalType === "expense"
           ? {
-              totalExpense:
-                state.totalExpense - parseInt(action.payload.amount || 0),
+              totalExpense: state.totalExpense - decreasedAmount,
             }
           : {
-              totalIncome:
-                state.totalIncome - parseInt(action.payload.amount || 0),
+              totalIncome: state.totalIncome - decreasedAmount,
             };
       return {
         ...state,
@@ -100,9 +108,9 @@ export const rootReducer = (state = initState, action) => {
     case actionTypes.SET_CURRENCY_RATES:
       return {
         ...state,
-        usdRate: action.payload.rates.USD.toFixed(4),
-        jpyRate: action.payload.rates.JPY.toFixed(4),
-        tryRate: action.payload.rates.TRY.toFixed(4),
+        USD: action.payload.rates.USD.toFixed(4),
+        JPY: action.payload.rates.JPY.toFixed(4),
+        TRY: action.payload.rates.TRY.toFixed(4),
       };
     default:
       return state;

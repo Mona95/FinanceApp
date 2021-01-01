@@ -43,8 +43,8 @@ function AddBar(props) {
       alert("FCard Name can not be empty.");
     } else {
       props.addFCard(cardData);
-      props.increaseTotal("expense", expense);
-      props.increaseTotal("income", income);
+      props.increaseTotal("expense", expense, currency);
+      props.increaseTotal("income", income, currency);
     }
   };
 
@@ -104,8 +104,8 @@ function AddBar(props) {
 
 const mapDispatchToProps = (dispatch) => ({
   addFCard: (cardData) => dispatch(addFCard(cardData)),
-  increaseTotal: (totalType, amount) =>
-    dispatch(increaseTotal(totalType, amount)),
+  increaseTotal: (totalType, amount, currency) =>
+    dispatch(increaseTotal(totalType, amount, currency)),
 });
 
 const mapStateToProps = (state) => ({

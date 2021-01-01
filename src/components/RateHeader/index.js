@@ -36,10 +36,10 @@ function RateHeader(props) {
 }
 
 const mapStateToProps = (state) => ({
-  eurRate: state.eurRate,
-  usdRate: state.usdRate,
-  jpyRate: state.jpyRate,
-  tryRate: state.tryRate,
+  eurRate: state.EUR,
+  usdRate: state.USD,
+  jpyRate: state.JPY,
+  tryRate: state.TRY,
 });
 
 export default connect(mapStateToProps, null)(RateHeader);

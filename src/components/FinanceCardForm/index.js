@@ -29,13 +29,15 @@ function FinanceCardForm(props) {
   };
 
   const calculateDifference = (oldValue, newValue, type) => {
+    oldValue = parseInt(oldValue);
+    newValue = parseInt(newValue);
     let difference;
     if (oldValue > newValue) {
       difference = oldValue - newValue;
-      props.decreaseTotal(type, difference);
+      props.decreaseTotal(type, difference, currency);
     } else if (oldValue < newValue) {
       difference = newValue - oldValue;
-      props.increaseTotal(type, difference);
+      props.increaseTotal(type, difference, currency);
     }
   };
 
@@ -107,10 +109,10 @@ function FinanceCardForm(props) {
 const mapDispatchToProps = (dispatch) => ({
   updateFCard: (cardName, updatedData) =>
     dispatch(updateFCard(cardName, updatedData)),
-  increaseTotal: (totalType, amount) =>
-    dispatch(increaseTotal(totalType, amount)),
-  decreaseTotal: (totalType, amount) =>
-    dispatch(decreaseTotal(totalType, amount)),
+  increaseTotal: (totalType, amount, currency) =>
+    dispatch(increaseTotal(totalType, amount, currency)),
+  decreaseTotal: (totalType, amount, currency) =>
+    dispatch(decreaseTotal(totalType, amount, currency)),
 });
 
 const mapStateToProps = (state) => ({

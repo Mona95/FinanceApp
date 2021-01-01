@@ -8,19 +8,18 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     marginRight: "24px !important",
   },
-  textField: {
-    width: "20ch",
-  },
   addButton: {
-    width: "40ch",
     display: "inline-block",
     marginLeft: "24px !important",
-    //padding: "10px !important",
     top: 14,
+    width: "-webkit-fill-available",
   },
   addIcon: {
     position: "absolute",
     left: 20,
+  },
+  paper: {
+    boxShadow: "none",
   },
 }));
 

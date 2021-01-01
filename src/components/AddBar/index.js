@@ -8,6 +8,8 @@ import AddBoxIcon from "@material-ui/icons/AddBox";
 import { currencyLists } from "../../utils";
 import { connect } from "react-redux";
 import { addFCard, increaseTotal } from "../../actions/actions";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 
 function AddBar(props) {
   const classes = useStyles();
@@ -50,54 +52,72 @@ function AddBar(props) {
 
   return (
     <div>
-      <TextField
-        label="FCard Name"
-        name="name"
-        type="text"
-        className={clsx(classes.margin, classes.textField)}
-        onChange={updateFCardName}
-        value={fcardName}
-      />
-      <TextField
-        label="Expense"
-        name="expense"
-        type="number"
-        value={expense}
-        className={clsx(classes.margin, classes.textField)}
-        onChange={updateExpense}
-        InputProps={{ inputProps: { min: 0 } }}
-      />
-      <TextField
-        label="Income"
-        name="income"
-        type="number"
-        value={income}
-        className={clsx(classes.margin, classes.textField)}
-        onChange={updateIncome}
-        InputProps={{ inputProps: { min: 0 } }}
-      />
-      <TextField
-        name="currency"
-        label="Select"
-        helperText="Please select your currency"
-        onChange={updateCurrency}
-        value={currency}
-        select
-      >
-        {currencyLists().map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
-      <Button
-        variant="outlined"
-        className={classes.addButton}
-        color="secondary"
-        onClick={handleAddFCard}
-      >
-        <AddBoxIcon className={classes.addIcon} /> Add FCard
-      </Button>
+      <Grid container spacing={2}>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>
+            <TextField
+              label="FCard Name"
+              name="name"
+              type="text"
+              className={clsx(classes.margin)}
+              onChange={updateFCardName}
+              value={fcardName}
+            />
+          </Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>
+            <TextField
+              label="Expense"
+              name="expense"
+              type="number"
+              value={expense}
+              className={clsx(classes.margin)}
+              onChange={updateExpense}
+              InputProps={{ inputProps: { min: 0 } }}
+            />
+          </Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>
+            <TextField
+              label="Income"
+              name="income"
+              type="number"
+              value={income}
+              className={clsx(classes.margin)}
+              onChange={updateIncome}
+              InputProps={{ inputProps: { min: 0 } }}
+            />
+          </Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>
+            <TextField
+              name="currency"
+              label="Select"
+              helperText="Please select your currency"
+              onChange={updateCurrency}
+              value={currency}
+              select
+            >
+              {currencyLists().map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <Button
+              variant="outlined"
+              className={classes.addButton}
+              color="secondary"
+              onClick={handleAddFCard}
+            >
+              <AddBoxIcon className={classes.addIcon} /> Add FCard
+            </Button>
+          </Paper>
+        </Grid>
+      </Grid>
     </div>
   );
 }

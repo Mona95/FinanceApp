@@ -1,6 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  "@keyframes blinker": {
+    "0%": { opacity: 0 },
+    "49%": { opacity: 0 },
+    "50%": { opacity: 1 },
+  },
   root: {
     flexGrow: 1,
   },
@@ -21,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     fontWeight: "bold",
     fontSize: 17,
+    animationName: "$blinker",
+    animationDuration: "0.4s",
+    animationTimingFunction: "linear",
+    animationIterationCount: "infinite",
   },
 }));
 

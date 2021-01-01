@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 30,
   },
   paper: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(2),
     textAlign: "center",
     whiteSpace: "nowrap",
     marginBottom: theme.spacing(1),

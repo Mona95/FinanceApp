@@ -12,23 +12,20 @@ export default function Content() {
   return (
     <div className={classes.contentWrapper}>
       <Grid container spacing={3}>
-        <Grid item xs={8}>
+        <Grid item xs={9}>
           <Paper className={classes.paper}>
             <AddBar />
           </Paper>
         </Grid>
       </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={8}>
-          <Paper className={classes.paper}></Paper>
-        </Grid>
+      <Divider className={classes.divider} />
+      <Grid>
         <Grid item xs={4}>
           <Paper className={classes.paper}>
             <Filter />
           </Paper>
         </Grid>
       </Grid>
-      <Divider className={classes.divider} />
       <FinanceCardList />
     </div>
   );

@@ -3,11 +3,13 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   headerWrapper: {
     flexGrow: 1,
+    minHeight: 80,
   },
   appIcon: {
     marginRight: theme.spacing(2),
     fontSize: 35,
     marginBottom: 5,
+    color: "yellow",
   },
   totalInfo: {
     marginRight: theme.spacing(4),

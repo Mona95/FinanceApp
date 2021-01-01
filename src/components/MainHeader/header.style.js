@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
   appIcon: {
     marginRight: theme.spacing(2),
     fontSize: 35,
+    marginBottom: 5,
   },
   totalInfo: {
     marginRight: theme.spacing(4),

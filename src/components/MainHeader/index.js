@@ -6,22 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import useStyles from "./header.style.js";
 import { connect } from "react-redux";
-import axios from "axios";
-
 function Header(props) {
   const classes = useStyles();
-  const [baseRate, setBaseRate] = useState();
-
-  useEffect(() => {
-    axios
-      .get(
-        "http://data.fixer.io/api/latest?access_key=82825661275378a9123df69159c5e7f3"
-      )
-      .then((response) => {
-        response && setBaseRate(response.data.base);
-      })
-      .catch((error) => console.error(error.data.error));
-  }, []);
 
   return (
     <div className={classes.headerWrapper}>
@@ -36,9 +22,6 @@ function Header(props) {
           </Typography>
           <Typography className={clsx(classes.totalInfo, classes.expenseInfo)}>
             T.Expense : {props.totalExpense}€
-          </Typography>
-          <Typography className={clsx(classes.totalInfo, classes.baseInfo)}>
-            Base Rate : {baseRate}
           </Typography>
         </Toolbar>
       </AppBar>

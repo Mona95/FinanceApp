@@ -7,6 +7,10 @@ const initState = {
   searchedValue: "",
   totalIncome: 0,
   totalExpense: 0,
+  EUR: 1,
+  USD: 0,
+  JPY: 0,
+  TRY: 0,
 };
 
 export const rootReducer = (state = initState, action) => {
@@ -89,6 +93,13 @@ export const rootReducer = (state = initState, action) => {
       return {
         ...state,
         ...decreasedTotal,
+      };
+    case actionTypes.SET_CURRENCY_RATES:
+      return {
+        ...state,
+        USD: action.payload.rates.USD.toFixed(4),
+        JPY: action.payload.rates.JPY.toFixed(4),
+        TRY: action.payload.rates.TRY.toFixed(4),
       };
     default:
       return state;

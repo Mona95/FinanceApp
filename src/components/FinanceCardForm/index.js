@@ -93,7 +93,7 @@ function FinanceCardForm(props) {
           helperText="Currency"
           value={cardCurrency}
           onChange={updateCardCurrency}
-          fullWidth
+          className={classes.currencyCombo}
         >
           {currencyLists().map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -106,12 +106,17 @@ function FinanceCardForm(props) {
         <Button
           variant="outlined"
           size="small"
-          color="secondary"
+          className={classes.updateBtn}
           onClick={handpeUpdateCardData}
         >
           Update
         </Button>
-        <Button variant="outlined" size="small" onClick={props.closeEditForm}>
+        <Button
+          variant="outlined"
+          size="small"
+          className={classes.cancelBtn}
+          onClick={props.closeEditForm}
+        >
           Cancel
         </Button>
       </CardActions>

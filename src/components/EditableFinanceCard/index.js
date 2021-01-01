@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import useStyles from "./editableFinanceCard.style.js";
 import FinanceCardForm from "../FinanceCardForm";
@@ -24,6 +24,10 @@ function EditableFinanceCard(props) {
     props.decreaseTotal("expense", card.expense);
     props.decreaseTotal("income", card.income);
   };
+
+  useEffect(() => {
+    editFormOpen && console.log("edit form is open");
+  }, [editFormOpen]);
 
   return (
     <Card className={classes.root}>

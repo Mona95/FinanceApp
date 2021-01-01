@@ -7,6 +7,22 @@ const useStyles = makeStyles({
     textAlign: "center",
     textShadow: "2px 0px 2px #fff",
     textTransform: "uppercase",
+    background: "#DBDDE7",
+    borderRadius: 15,
+  },
+  currencyCombo: {
+    width: 168,
+  },
+  updateBtn: {
+    border: "1px solid #249356",
+    color: "#249356",
+    "&:hover": {
+      border: "1px solid #249356!important",
+      color: "#249356!important",
+    },
+  },
+  cancelBtn: {
+    color: "lightslategray",
   },
 });
 

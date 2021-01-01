@@ -1,9 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
+//Components
 import EditableFinanceCard from "../../components/EditableFinanceCard";
+//Material-ui Components
 import GridList from "@material-ui/core/GridList";
 import Typography from "@material-ui/core/Typography";
+//Styles
 import useStyles from "./financeCardList.style.js";
-import { connect } from "react-redux";
+//Helper Methods
 import { isEmpty } from "../../utils";
 
 function FinanceCardList(props) {

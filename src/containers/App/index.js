@@ -1,8 +1,10 @@
 import React from "react";
+//Components
 import Header from "../../components/MainHeader";
-import Content from "../Content";
-import { Container } from "@material-ui/core";
 import RateHeader from "../../components/RateHeader";
+import Content from "../Content";
+//Material-ui Components
+import { Container } from "@material-ui/core";
 
 function App() {
   return (

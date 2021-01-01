@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import clsx from "clsx";
-import useStyles from "./rateHeader.style";
+//Material-ui Components
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+//Styles
+import useStyles from "./rateHeader.style";
+//Actions
 import { fetchCurrencyRates } from "../../actions/middleware/currencyRates";
 
 function RateHeader(props) {

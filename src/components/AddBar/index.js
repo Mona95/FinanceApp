@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import useStyles from "./addBar.style.js";
+import { connect } from "react-redux";
 import clsx from "clsx";
+//Material-ui Components
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import AddBoxIcon from "@material-ui/icons/AddBox";
-import { currencyLists } from "../../utils";
-import { connect } from "react-redux";
-import { addFCard, increaseTotal } from "../../actions/actions";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+//Styles
+import useStyles from "./addBar.style.js";
+//Helper Methods
+import { currencyLists } from "../../utils";
+//Actions
+import { addFCard, increaseTotal } from "../../actions/actions";
 
 function AddBar(props) {
   const classes = useStyles();

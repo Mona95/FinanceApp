@@ -1,15 +1,19 @@
 import React from "react";
+//Material-ui Components
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import useStyles from "./financeCard.style.js";
-import { ReactComponent as Graph } from "../../assets/images/graph.svg";
+//Material-ui Icons
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import LocalAtmIcon from "@material-ui/icons/LocalAtm";
+//Styles
+import useStyles from "./financeCard.style.js";
+//SVGs
+import { ReactComponent as Graph } from "../../assets/images/graph.svg";
 
 export default function FinanceCard(props) {
   const classes = useStyles();

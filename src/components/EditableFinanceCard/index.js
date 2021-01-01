@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Card from "@material-ui/core/Card";
-import useStyles from "./editableFinanceCard.style.js";
+import { connect } from "react-redux";
+//Components
 import FinanceCardForm from "../FinanceCardForm";
 import FinanceCard from "../FinanceCard";
-import { connect } from "react-redux";
+//Material-ui Components
+import Card from "@material-ui/core/Card";
+//Styles
+import useStyles from "./editableFinanceCard.style.js";
+//Actions
 import { deleteFCard, decreaseTotal } from "../../actions/actions";
 
 function EditableFinanceCard(props) {

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+//Material-ui Components
 import { Button, CardContent } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
+//Styles
 import useStyles from "./financeCardForm.style.js";
-import { connect } from "react-redux";
+//Actions
 import {
   decreaseTotal,
   increaseTotal,

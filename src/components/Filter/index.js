@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+//Material-ui Components
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
+//Styles
 import useStyles from "./filter.style.js";
-import { connect } from "react-redux";
+//Actions
 import { filterFCards } from "../../actions/actions";
 
 function Filter(props) {

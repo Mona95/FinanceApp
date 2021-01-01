@@ -1,11 +1,14 @@
 import React from "react";
+//Components
 import Filter from "../../components/Filter";
 import AddBar from "../../components/AddBar";
 import FinanceCardList from "../FinanceCardList";
-import useStyles from "./content.style.js";
+//Material-ui Components
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
+//Styles
+import useStyles from "./content.style.js";
 
 export default function Content() {
   const classes = useStyles();
